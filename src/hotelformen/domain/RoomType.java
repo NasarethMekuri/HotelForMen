@@ -26,7 +26,6 @@ public enum RoomType
     public int getSize() { return _size; }
     public boolean getFreeServices() { return _freeServices; }
     
-    
     RoomType(int beds, int size, boolean freeServices)
     {
         _beds = beds;
