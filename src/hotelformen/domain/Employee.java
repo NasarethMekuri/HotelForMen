@@ -11,25 +11,25 @@ package hotelformen.domain;
  */
 public class Employee extends Person
 {
-    private String title;
-    private double wage;
+    private String _title;
+    private double _wage;
 
     /**
-     * @return the title
+     * @return the _title
      */
-    public String getTitle()            {return title;}
+    public String getTitle()            {return _title;}
     /**
-     * @param title the title to set
+     * @param title the _title to set
      */
-    public void setTitle(String title)  {this.title = title;}
+    public void setTitle(String title)  {this._title = title;}
 
     /**
-     * @return the wage
+     * @return the _wage
      */
-    public double getWage()             {return wage;}
+    public double getWage()             {return _wage;}
     /**
-     * @param wage the wage to set
+     * @param wage the _wage to set
      */
-    public void setWage(double wage)    {this.wage = wage;}
+    public void setWage(double wage)    {this._wage = wage;}
     
 }

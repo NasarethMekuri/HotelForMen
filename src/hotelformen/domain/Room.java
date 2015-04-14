@@ -5,6 +5,8 @@
  */
 package hotelformen.domain;
 
+import java.util.List;
+
 /**
  *
  * @author bruger
@@ -15,6 +17,7 @@ public class Room
     private final int ID;
     private String _phoneNR;
     private double _price;
+    private List<Reservation> _reservations;
     
     public Room(int id, RoomType type, String phoneNR, double price)
     {
@@ -34,4 +37,7 @@ public class Room
 
     public double getPrice() { return _price; }
     public void setPrice(double _price) { this._price = _price; }
+    
+    public List<Reservation> getReservations()                      {return _reservations;}
+    public void setReservations(List<Reservation> _reservations)    {this._reservations = _reservations;}
 }

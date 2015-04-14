@@ -11,35 +11,35 @@ package hotelformen.domain;
  */
 public abstract class Person
 {
-    private int id;
-    private String name, phoneNR;
+    private int _id;
+    private String _name, _phoneNR;
 
     /**
-     * @return the id
+     * @return the _id
      */
-    public int getId()                  {return id;}
+    public int getId()                  {return _id;}
     /**
-     * @param id the id to set
+     * @param id the _id to set
      */
-    public void setId(int id)           {this.id = id;}
+    public void setId(int id)           {this._id = id;}
 
     /**
-     * @return the name
+     * @return the _name
      */
-    public String getName()             {return name;}
+    public String getName()             {return _name;}
     /**
-     * @param name the name to set
+     * @param name the _name to set
      */
-    public void setName(String name)    {this.name = name;}
+    public void setName(String name)    {this._name = name;}
     
     /**
-     * @return the phoneNR
+     * @return the _phoneNR
      */
-    public String getPhoneNR()              {return phoneNR;}
+    public String getPhoneNR()              {return _phoneNR;}
     /**
-     * @param phoneNR the phoneNR to set
+     * @param phoneNR the _phoneNR to set
      */
-    public void setPhoneNR(String phoneNR)  {this.phoneNR = phoneNR;}
+    public void setPhoneNR(String phoneNR)  {this._phoneNR = phoneNR;}
     
     
 }
