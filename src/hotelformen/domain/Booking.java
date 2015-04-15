@@ -8,8 +8,15 @@ public class Booking
     private List<Service> _services;
     private List<Reservation> _reservations;
     private boolean _isActive;
-    private double AccumulatedPrice;
 
+    public Booking(Customer customer, List<Service> services, List<Reservation> reservations)
+    {
+        this._customer = customer;
+        this._reservations = reservations;
+        this._services = services;
+        this._isActive = true;
+    }
+    
     /**
      * @return the _customer
      */
@@ -36,23 +43,25 @@ public class Booking
      * @param _reservations the _reservations to set
      */
     public void setReservations(List<Reservation> _reservations){this._reservations = _reservations;}
-
+    
     /**
      * @return the _isActive
      */
-    public boolean isIsActive()                                 {return _isActive;}
+    public boolean isActive()                                   {return _isActive;}
     /**
      * @param _isActive the _isActive to set
      */
     public void setIsActive(boolean _isActive)                  {this._isActive = _isActive;}
-
+    
     /**
      * @return the AccumulatedPrice
      */
-    public double getAccumulatedPrice()                         {return AccumulatedPrice;}
-    /**
-     * @param AccumulatedPrice the AccumulatedPrice to set
-     */
-    public void setAccumulatedPrice(double AccumulatedPrice)    {this.AccumulatedPrice = AccumulatedPrice;}
+    public double getAccumulatedPrice()                         {return 0;}//TODO: Get servicePrices and roomPrice
     
+    public void addServiceToBooking(Service s)
+    {
+        _services.add(s);
+    }
+
+            
 }

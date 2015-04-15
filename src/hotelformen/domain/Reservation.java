@@ -13,23 +13,40 @@ import java.sql.Date;
  */
 public class Reservation
 {
-    private Date startDate, endDate;
+    private Date _startDate, _endDate;
+    private Room _room;
+    
+    public Reservation(Room room, Date startDate, Date endDate)
+    {
+        setRoom(room);
+        setStartDate(startDate);
+        setEndDate(endDate);
+    }
 
     /**
-     * @return the startDate
+     * @return the _startDate
      */
-    public Date getStartDate()                  {return startDate;}
+    public Date getStartDate()                  {return _startDate;}
     /**
-     * @param startDate the startDate to set
+     * @param startDate the _startDate to set
      */
-    public void setStartDate(Date startDate)    {this.startDate = startDate;}
+    public void setStartDate(Date startDate)    {this._startDate = startDate;}
 
     /**
-     * @return the endDate
+     * @return the _endDate
      */
-    public Date getEndDate()                    {return endDate;}
+    public Date getEndDate()                    {return _endDate;}
     /**
-     * @param endDate the endDate to set
+     * @param endDate the _endDate to set
      */
-    public void setEndDate(Date endDate)        {this.endDate = endDate;}
+    public void setEndDate(Date endDate)        {this._endDate = endDate;}
+
+    /**
+     * @return the _room
+     */
+    public Room getRoom()                       {return _room;}
+    /**
+     * @param _room the _room to set
+     */
+    public void setRoom(Room room)             {this._room = room;}
 }

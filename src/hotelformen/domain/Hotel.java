@@ -10,6 +10,7 @@ public class Hotel
     private List<Customer> _customers;
     private List<Employee> _employees;
     private List<Service> _services;
+    private List<Booking> _bookings;
     
     public Hotel()
     {
@@ -56,6 +57,15 @@ public class Hotel
     public void setServices(List<Service> _services)    {this._services = _services;}
     
     /**
+     * @return the _bookings
+     */
+    public List<Booking> getBookings()                  {return _bookings;}
+    /**
+     * @param _bookings the _bookings to set
+     */
+    public void setBookings(List<Booking> _bookings)    {this._bookings = _bookings;}
+    
+    /**
      * This method creates a Room
      * @param id the Room ID
      * @param type the room type
@@ -63,7 +73,7 @@ public class Hotel
      * @param price The cost of the Room
      * @return
      */
-    public Room createRoom(int id, RoomType type, String phoneNR, double price)
+    public Room createRoom(int id, String type, String phoneNR, double price)
     {
         return new Room(id, type, phoneNR, price);
     }
@@ -73,7 +83,7 @@ public class Hotel
     */
     
     /**
-     * 
+     *
      * This method searches all the rooms in the hotel and their reservations for availability.
      * If a reservation has not been made, or partially made within the requested (param) timeframe, the Room will be added to the List that is returned.
      * @param startDate the StartDate of the requested reservation
@@ -88,7 +98,7 @@ public class Hotel
         List<Room> result = new ArrayList<Room>();
         
         //Iterate through the List of Rooms.
-        for (int i = 0; i < _rooms.size()-1; i++)
+        for (int i = 0; i < _rooms.size(); i++)
         {
             //Check the roomtype for null, AND if roomtype is the same as the roomtype of the Room in the current iteration.
             if (type != null && type != _rooms.get(i).getType())
@@ -99,7 +109,7 @@ public class Hotel
             List<Reservation> roomReservations = _rooms.get(i).getReservations();
             
             //Iterate through the reservations of the Room in the current iteration.
-            for (int j = 0; j < roomReservations.size()-1; j++)
+            for (int j = 0; j < roomReservations.size(); j++)
             {
                 //Check if (param)startDate is before the startDate in the reservation AND if (param)startDate is after the EndDate in the reservation.
                 if (roomReservations.get(j).getStartDate().compareTo(startDate) < 0 && roomReservations.get(j).getEndDate().compareTo(startDate) > 0)
@@ -125,5 +135,52 @@ public class Hotel
         }
         return result;
     }
+    
+  
+    public boolean bookRooms(List<Room> rooms, Date startDate, Date endDate, Customer customer, List<Service> services)
+    {
+        List<Reservation> reservationsList = new ArrayList<Reservation>();
+        
+        for (int i = 0; i < rooms.size(); i++)
+        {
+            reservationsList.add(rooms.get(i).reserveRoom(startDate, endDate));
+        }
+        
+        return createBooking(reservationsList, customer, services);
+    }
+    
+    public List<Service> viewAvailableServices()
+    {
+        return _services;
+    }
+    
+    public boolean addServicesToBooking(List<Service> services, Customer customer)
+    {   
+        //TODO: Cannot return false is Customer does not have an active booking.
+        for (int i = 0; i < _bookings.size(); i++)
+        {
+            if (_bookings.get(i).getCustomer().getId() == customer.getId() && _bookings.get(i).isActive())
+            {
+                for (Service s : services)
+                {
+                    _bookings.get(i).addServiceToBooking(s);
+                }   
+            }
+        }
+        return true;
+    }
+    
+    
+    private boolean createBooking(List<Reservation> reservations, Customer customer, List<Service> services)
+    {
+        Booking booking = new Booking(customer, services, reservations);
+        
+        return true;
+    }
+
+    
+    
+    
 }
+
 

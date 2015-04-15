@@ -5,6 +5,7 @@
  */
 package hotelformen.domain;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -19,12 +20,39 @@ public class Room
     private double _price;
     private List<Reservation> _reservations;
     
-    public Room(int id, RoomType type, String phoneNR, double price)
+    public Room(int id, String type, String phoneNR, double price)
     {
         ID = id;
-        _type = type;
         _phoneNR = phoneNR;
         _price = price;
+        /*
+        
+        */
+        switch (type.toUpperCase())
+        {
+            case "SINGLE":
+                _type = RoomType.SINGLE;
+            break;
+            case "DOUBLE":
+                _type = RoomType.DOUBLE;
+            break;
+            case "QUEEN":
+                _type = RoomType.QUEEN;
+            break;
+            case "KING":
+                _type = RoomType.KING;
+            break;
+            case "SHEIK":
+                _type = RoomType.SHEIK;
+            break;
+            case "FOR_MEN":
+                _type = RoomType.FOR_MEN;
+            break;
+                
+            default:
+                throw new AssertionError("Wrong type"); //TODO-> Handle this is UI
+        }
+       
     }
     
     public RoomType getType() {return _type; }
@@ -40,4 +68,15 @@ public class Room
     
     public List<Reservation> getReservations()                      {return _reservations;}
     public void setReservations(List<Reservation> _reservations)    {this._reservations = _reservations;}
+    
+    
+    public Reservation reserveRoom(Date startDate, Date endDate)
+    {
+        Reservation res = new Reservation(this, startDate, endDate);
+        
+        _reservations.add(res);
+        
+        return res;
+    }
+    
 }
