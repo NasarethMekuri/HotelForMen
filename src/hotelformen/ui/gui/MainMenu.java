@@ -5,6 +5,8 @@
  */
 package hotelformen.ui.gui;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Kristian
@@ -28,43 +30,56 @@ public class MainMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        bookingBtn = new javax.swing.JButton();
+        productsBtn = new javax.swing.JButton();
+        servicesBtn = new javax.swing.JButton();
+        userBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        exitBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 300));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setPreferredSize(new java.awt.Dimension(172, 206));
 
-        jButton1.setText("Booking");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bookingBtn.setText("Booking");
+        bookingBtn.setName(""); // NOI18N
+        bookingBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bookingBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Products");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        productsBtn.setText("Products");
+        productsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                productsBtnActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Services");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        servicesBtn.setText("Services");
+        servicesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                servicesBtnActionPerformed(evt);
             }
         });
 
-        jButton4.setText("User Administration");
+        userBtn.setText("User Administration");
+        userBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userBtnActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel1.setText("MainMenu");
+
+        exitBtn.setText("Exit");
+        exitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,16 +88,19 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(40, 40, 40)
+                        .addComponent(userBtn))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jButton4)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                        .addGap(65, 65, 65)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(productsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bookingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(servicesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,15 +108,19 @@ public class MainMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(bookingBtn)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(productsBtn)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(servicesBtn)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(userBtn)
+                .addGap(18, 18, 18)
+                .addComponent(exitBtn)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
+
+        bookingBtn.getAccessibleContext().setAccessibleName("bookingBtn");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,27 +134,70 @@ public class MainMenu extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bookingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingBtnActionPerformed
         System.out.println("Much Booking, yallayalla");
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        JFrame bookMenu = new BookingMenu();
+        
+        this.dispose();
+        bookMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        bookMenu.setResizable(false);
+        bookMenu.setTitle("Main Menu");
+        bookMenu.setVisible(true);
+        bookMenu.setLocationRelativeTo(null);
+    }//GEN-LAST:event_bookingBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void productsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productsBtnActionPerformed
+        System.out.println("Much Products, yallayalla");
+        
+        JFrame bookMenu = new BookingMenu();
+        
+        this.dispose();
+        bookMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        bookMenu.setResizable(false);
+        bookMenu.setTitle("Booking Menu");
+        bookMenu.setVisible(true);
+        bookMenu.setLocationRelativeTo(null);
+    }//GEN-LAST:event_productsBtnActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void servicesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicesBtnActionPerformed
+        System.out.println("Much Services, yallayalla");
+        
+        JFrame servicesMenu = new ServicesMenu();
+        
+        this.dispose();
+        servicesMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        servicesMenu.setResizable(false);
+        servicesMenu.setTitle("Services Menu");
+        servicesMenu.setVisible(true);
+        servicesMenu.setLocationRelativeTo(null);
+    }//GEN-LAST:event_servicesBtnActionPerformed
 
-    /**
+    private void userBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userBtnActionPerformed
+        System.out.println("Much Users, yallayalla");
+        
+        JFrame userMenu = new UserAdministration();
+        
+        this.dispose();
+        userMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        userMenu.setResizable(false);
+        userMenu.setTitle("User Administrations");
+        userMenu.setVisible(true);
+        userMenu.setLocationRelativeTo(null);
+    }//GEN-LAST:event_userBtnActionPerformed
+
+    private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_exitBtnActionPerformed
+/**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -149,13 +214,13 @@ public class MainMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookingMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookingMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookingMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookingMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -168,11 +233,12 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton bookingBtn;
+    private javax.swing.JButton exitBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton productsBtn;
+    private javax.swing.JButton servicesBtn;
+    private javax.swing.JButton userBtn;
     // End of variables declaration//GEN-END:variables
 }
