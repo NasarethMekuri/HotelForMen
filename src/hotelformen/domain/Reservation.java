@@ -14,11 +14,11 @@ import java.sql.Date;
 public class Reservation
 {
     private Date _startDate, _endDate;
-    private Room _room;
+    private int _roomID;
     
-    public Reservation(Room room, Date startDate, Date endDate)
+    public Reservation(int roomID, Date startDate, Date endDate)
     {
-        setRoom(room);
+        _roomID = roomID;
         setStartDate(startDate);
         setEndDate(endDate);
     }
@@ -44,9 +44,9 @@ public class Reservation
     /**
      * @return the _room
      */
-    public Room getRoom()                       {return _room;}
+    public int getRoomID()                       {return _roomID;}
     /**
      * @param _room the _room to set
      */
-    public void setRoom(Room room)             {this._room = room;}
+    public void setRoomID(int roomID)             {_roomID = roomID;}
 }
