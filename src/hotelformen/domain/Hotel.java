@@ -177,10 +177,76 @@ public class Hotel
         
         return true;
     }
-
     
     
+    public Service createService(int id, String name, String description, double price)
+    {
+        //TODO: Handle ID! (ID should be unique, so It cannot be given as param) 
+        //Create Service in Database - and fetch the unique ID from the Service table.
+        return new Service(id, name, description, price);
+    }
     
+    public void updateService(int id, String name, String description, double price)//TODO: return type must be boolean! change should be verified 
+    {
+        for (int i = 0; i < _services.size(); i++)
+        {
+            if (_services.get(i).getID() == id)
+            {
+                _services.get(i).setName(name);
+                _services.get(i).setDescripion(description);
+                _services.get(i).setPrice(price);
+                return;
+            }
+        }
+    }
+    
+    public void updateServiceName(int id, String name)//TODO: return type must be boolean! change should be verified 
+    {
+        for (Service s : _services)
+        {
+            if (s.getID() == id)
+            {
+                s.setName(name);
+                return;
+            }
+        }
+    }
+    
+    public void updateServiceDescription(int id, String description)//TODO: return type must be boolean! change should be verified 
+    {
+        for (Service s : _services)
+        {
+            if (s.getID() == id)
+            {
+                s.setDescripion(description);
+                return;
+            }
+        }
+    }
+    
+    public void updateServicePrice(int id, double price)//TODO: return type must be boolean! change should be verified 
+    {
+        for (Service s : _services)
+        {
+            if (s.getID() == id)
+            {
+                s.setPrice(price);
+                return;
+            }
+        }
+    }
+    
+    public void deleteService(int id) //TODO: return type must be boolean! change should be verified 
+    {
+        for (int i = 0; i < _services.size(); i++)
+        {
+            if (_services.get(i).getID() == id)
+            {
+               _services.remove(i);
+               return;
+            }
+        }
+    }
 }
 
 
