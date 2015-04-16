@@ -156,7 +156,8 @@ public class Hotel
     
     public boolean addServicesToBooking(List<Service> services, Customer customer)
     {   
-        //TODO: Cannot return false is Customer does not have an active booking.
+        //TODO#1: Cannot return false is Customer does not have an active booking.
+        //TODO#2: Service(s) are added to all of the customer's active bookings.
         for (int i = 0; i < _bookings.size(); i++)
         {
             if (_bookings.get(i).getCustomer().getId() == customer.getId() && _bookings.get(i).isActive())
@@ -164,6 +165,7 @@ public class Hotel
                 for (Service s : services)
                 {
                     _bookings.get(i).addServiceToBooking(s);
+                    //return here to only add service(s) to customers FIRST occuring booking
                 }   
             }
         }
@@ -179,6 +181,7 @@ public class Hotel
     }
     
     
+    //Manage Services:
     public Service createService(int id, String name, String description, double price)
     {
         //TODO: Handle ID! (ID should be unique, so It cannot be given as param) 
