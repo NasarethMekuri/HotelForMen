@@ -13,6 +13,13 @@ public abstract class Person
 {
     private int _id;
     private String _name, _phoneNR;
+    
+    public Person(int id, String name, String phoneNR)
+    {
+        _id = id;
+        _name = name;
+        _phoneNR = phoneNR;
+    }
 
     /**
      * @return the _id

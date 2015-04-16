@@ -1,7 +1,10 @@
 package hotelformen;
 
+import hotelformen.domain.*;
 import hotelformen.ui.gui.MainMenu;
 import javax.swing.JFrame;
+import hotelformen.technical.DatabaseHandler;
+import java.util.List;
 
 public class HotelForMen
 {
@@ -14,6 +17,10 @@ public class HotelForMen
         mainMenu.setTitle("Main Menu");
         mainMenu.setVisible(true);
         mainMenu.setLocationRelativeTo(null);
+        
+        DatabaseHandler dbHandler = new DatabaseHandler();
+        List<Booking> test = dbHandler.getBookings();
+
     }
     
 }

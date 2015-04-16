@@ -13,7 +13,13 @@ public class Employee extends Person
 {
     private String _title;
     private double _wage;
-
+    
+    public Employee(int id, String name, String title, double wage, String phoneNR, int postalNR)
+    {
+        super(id, name, phoneNR);
+        _title = title;
+        _wage = wage;
+    }
     /**
      * @return the _title
      */

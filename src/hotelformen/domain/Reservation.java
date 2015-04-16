@@ -18,7 +18,11 @@ public class Reservation
     
     public Reservation(int roomID, Date startDate, Date endDate)
     {
+<<<<<<< HEAD
         _roomID = roomID;
+=======
+        setRoomID(roomID);
+>>>>>>> 8815d4cb9ed2b984b48cb3e0778b9e7d8ad45c9e
         setStartDate(startDate);
         setEndDate(endDate);
     }
@@ -42,11 +46,21 @@ public class Reservation
     public void setEndDate(Date endDate)        {this._endDate = endDate;}
 
     /**
-     * @return the _room
+     * @return the _roomID
      */
+<<<<<<< HEAD
     public int getRoomID()                       {return _roomID;}
+=======
+    public int getRoomID()                      {return _roomID;}
+>>>>>>> 8815d4cb9ed2b984b48cb3e0778b9e7d8ad45c9e
     /**
-     * @param _room the _room to set
+     * @param _roomID the _roomID to set
      */
+<<<<<<< HEAD
     public void setRoomID(int roomID)             {_roomID = roomID;}
+=======
+    public void setRoomID(int _roomID)          {this._roomID = _roomID;}
+
+   
+>>>>>>> 8815d4cb9ed2b984b48cb3e0778b9e7d8ad45c9e
 }

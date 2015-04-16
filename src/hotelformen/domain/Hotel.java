@@ -156,7 +156,8 @@ public class Hotel
     
     public boolean addServicesToBooking(List<Service> services, Customer customer)
     {   
-        //TODO: Cannot return false is Customer does not have an active booking.
+        //TODO#1: Cannot return false is Customer does not have an active booking.
+        //TODO#2: Service(s) are added to all of the customer's active bookings.
         for (int i = 0; i < _bookings.size(); i++)
         {
             if (_bookings.get(i).getCustomer().getId() == customer.getId() && _bookings.get(i).isActive())
@@ -164,6 +165,7 @@ public class Hotel
                 for (Service s : services)
                 {
                     _bookings.get(i).addServiceToBooking(s);
+                    //return here to only add service(s) to customers FIRST occuring booking
                 }   
             }
         }
@@ -177,10 +179,77 @@ public class Hotel
         
         return true;
     }
-
     
     
+    //Manage Services:
+    public Service createService(int id, String name, String description, double price)
+    {
+        //TODO: Handle ID! (ID should be unique, so It cannot be given as param) 
+        //Create Service in Database - and fetch the unique ID from the Service table.
+        return new Service(id, name, description, price);
+    }
     
+    public void updateService(int id, String name, String description, double price)//TODO: return type must be boolean! change should be verified 
+    {
+        for (int i = 0; i < _services.size(); i++)
+        {
+            if (_services.get(i).getID() == id)
+            {
+                _services.get(i).setName(name);
+                _services.get(i).setDescripion(description);
+                _services.get(i).setPrice(price);
+                return;
+            }
+        }
+    }
+    
+    public void updateServiceName(int id, String name)//TODO: return type must be boolean! change should be verified 
+    {
+        for (Service s : _services)
+        {
+            if (s.getID() == id)
+            {
+                s.setName(name);
+                return;
+            }
+        }
+    }
+    
+    public void updateServiceDescription(int id, String description)//TODO: return type must be boolean! change should be verified 
+    {
+        for (Service s : _services)
+        {
+            if (s.getID() == id)
+            {
+                s.setDescripion(description);
+                return;
+            }
+        }
+    }
+    
+    public void updateServicePrice(int id, double price)//TODO: return type must be boolean! change should be verified 
+    {
+        for (Service s : _services)
+        {
+            if (s.getID() == id)
+            {
+                s.setPrice(price);
+                return;
+            }
+        }
+    }
+    
+    public void deleteService(int id) //TODO: return type must be boolean! change should be verified 
+    {
+        for (int i = 0; i < _services.size(); i++)
+        {
+            if (_services.get(i).getID() == id)
+            {
+               _services.remove(i);
+               return;
+            }
+        }
+    }
 }
 
 

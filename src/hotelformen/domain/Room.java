@@ -72,7 +72,7 @@ public class Room
     
     public Reservation reserveRoom(Date startDate, Date endDate)
     {
-        Reservation res = new Reservation(this, startDate, endDate);
+        Reservation res = new Reservation(ID, startDate, endDate);
         
         _reservations.add(res);
         

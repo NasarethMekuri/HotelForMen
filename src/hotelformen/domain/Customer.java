@@ -13,6 +13,11 @@ public class Customer extends Person
 {
     private String _paymentInfo;
 
+    public Customer(int id, String name, String paymentInfo, String phoneNR, int postalNR)
+    {
+        super(id, name, phoneNR);
+        _paymentInfo = paymentInfo;
+    }
     /**
      * @return the _paymentInfo
      */
