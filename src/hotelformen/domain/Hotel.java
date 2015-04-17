@@ -189,11 +189,9 @@ public class Hotel
     //Manage Services:
     public Service createService(String name, String description, double price)
     {
-        Service s = _databaseHandler.createService(name, description, price);
         //TODO: Handle ID! (ID should be unique, so It cannot be given as param) 
         //Create Service in Database - and fetch the unique ID from the Service table.
-        _services.add(s);
-        return s;
+        return _databaseHandler.createService(name, description, price);
     }
     
     public boolean updateService(int id, String name, String description, double price)//TODO: return type must be boolean! change should be verified 
@@ -205,6 +203,7 @@ public class Hotel
                 _services.get(i).setName(name);
                 _services.get(i).setDescripion(description);
                 _services.get(i).setPrice(price);
+                //TODO HANDLE IN DATABASE!
                 return true;
             }
         }
@@ -291,7 +290,10 @@ public class Hotel
         {
             if (_services.get(i).getID() == id)
             {
-               _services.remove(i);
+                if (_databaseHandler.deleteService(id))
+                {
+                    _services.remove(i);
+                }
                return true;
             }
         }
