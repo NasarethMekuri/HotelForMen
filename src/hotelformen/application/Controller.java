@@ -39,9 +39,9 @@ public class Controller implements IController
     }
     
     @Override
-    public Service createService(int id, String name, String description, double price)
+    public Service createService(String name, String description, double price)
     {
-        return hotel.createService(id, name, description, price);
+        return hotel.createService(name, description, price);
     }
     
     @Override

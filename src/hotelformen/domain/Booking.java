@@ -60,6 +60,7 @@ public class Booking
     
     public void addServiceToBooking(Service s)
     {
+        //TODO Write to database.
         _services.add(s);
     }
 
