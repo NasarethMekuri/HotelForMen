@@ -8,7 +8,9 @@ package hotelformen.ui.gui;
 import hotelformen.application.Controller;
 import hotelformen.application.IController;
 import hotelformen.domain.Room;
+import hotelformen.domain.Service;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 
@@ -49,6 +51,8 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
         goBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
         bookRoomBtn = new javax.swing.JButton();
+        customerIDTF = new javax.swing.JTextField();
+        CustomerIDLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,35 +96,39 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
             }
         });
 
+        CustomerIDLabel.setText("Customer ID:");
+
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
         menuPanelLayout.setHorizontalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuPanelLayout.createSequentialGroup()
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(titleLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(menuPanelLayout.createSequentialGroup()
+                                .addComponent(goBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(bookRoomBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(startDateLabel)
                             .addComponent(endDateLabel)
-                            .addComponent(roomTypeLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(roomTypeTF, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                            .addComponent(endDateTF)
-                            .addComponent(startDateTF)))
-                    .addGroup(menuPanelLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(titleLabel)
-                        .addGap(0, 25, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
-                        .addContainerGap()
+                            .addComponent(roomTypeLabel)
+                            .addComponent(CustomerIDLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(menuPanelLayout.createSequentialGroup()
-                                .addComponent(goBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(bookRoomBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(roomTypeTF)
+                            .addComponent(endDateTF)
+                            .addComponent(startDateTF)
+                            .addComponent(customerIDTF))))
                 .addContainerGap())
         );
         menuPanelLayout.setVerticalGroup(
@@ -140,7 +148,11 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(roomTypeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(roomTypeLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(customerIDTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CustomerIDLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bookRoomBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -204,6 +216,13 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
 
     private void bookRoomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookRoomBtnActionPerformed
         System.out.println("Number of Selected" + resultList.getSelectedItems().length);
+        List<Room> bookedRooms = new ArrayList<Room>();
+        for (String s : resultList.getItems()) {
+            int id = Integer.parseInt(s.split(" ")[0]);
+            bookedRooms.add(ctr.getRoomFromId(id));
+        }
+        
+        ctr.bookRooms(bookedRooms, Date.valueOf(startDateTF.getText()), Date.valueOf(endDateTF.getText()), Integer.parseInt(customerIDTF.getText()), new ArrayList<Service>());
     }//GEN-LAST:event_bookRoomBtnActionPerformed
 
     /**
@@ -243,8 +262,10 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CustomerIDLabel;
     private javax.swing.JButton backBtn;
     private javax.swing.JButton bookRoomBtn;
+    private javax.swing.JTextField customerIDTF;
     private javax.swing.JLabel endDateLabel;
     private javax.swing.JTextField endDateTF;
     private javax.swing.JButton goBtn;

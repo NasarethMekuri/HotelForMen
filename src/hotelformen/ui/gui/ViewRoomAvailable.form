@@ -69,34 +69,36 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="goBtn" min="-2" pref="78" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="backBtn" min="-2" pref="67" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="bookRoomBtn" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="startDateLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="endDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="roomTypeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="CustomerIDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="roomTypeTF" pref="75" max="32767" attributes="0"/>
-                              <Component id="endDateTF" max="32767" attributes="0"/>
-                              <Component id="startDateTF" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="25" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="goBtn" max="32767" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="backBtn" min="-2" pref="55" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="bookRoomBtn" max="32767" attributes="0"/>
+                              <Component id="roomTypeTF" max="32767" attributes="0"/>
+                              <Component id="endDateTF" max="32767" attributes="0"/>
+                              <Component id="startDateTF" max="32767" attributes="0"/>
+                              <Component id="customerIDTF" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -124,7 +126,12 @@
                       <Component id="roomTypeTF" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="roomTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="88" max="32767" attributes="0"/>
+                  <EmptySpace pref="57" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="customerIDTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="CustomerIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="bookRoomBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -189,6 +196,13 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bookRoomBtnActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="customerIDTF">
+        </Component>
+        <Component class="javax.swing.JLabel" name="CustomerIDLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Customer ID:"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
