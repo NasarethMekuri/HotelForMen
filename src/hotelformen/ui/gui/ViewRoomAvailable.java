@@ -188,8 +188,7 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void goBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBtnActionPerformed
-        List<Room> rooms = ctr.getAvailableRooms(Date.valueOf(startDateTF.getText()), Date.valueOf(endDateTF.getText()), 
-                (roomTypeTF.getText().equals("")) ? null : roomTypeTF.getText());
+        List<Room> rooms = ctr.getAvailableRooms(Date.valueOf(startDateTF.getText()), Date.valueOf(endDateTF.getText()), roomTypeTF.getText());
         System.out.println("Rooms found: " + rooms.size());
         for (Room r : rooms) {
             System.out.println(r.getID() + " - " + r.getType().name().toLowerCase());
