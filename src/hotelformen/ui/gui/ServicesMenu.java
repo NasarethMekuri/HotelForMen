@@ -144,23 +144,7 @@ public class ServicesMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-        JFrame updateMenu = new ManageService();
-        
-        Component[] components = updateMenu.getComponents();
-        
-        //Changes components in the manage service, to make it look like update menu:
-        for (Component c : components) {
-            if (c instanceof JLabel) {
-                JLabel label = (JLabel) c;
-                if (label.getName().equals("title"))
-                    label.setText("Update Services");
-            }
-            else if (c instanceof JTextField) {
-                JTextField textfield = (JTextField) c;
-                if (textfield.getName().equals("title"))
-                    textfield.setText("Update Services");
-            }
-        }
+        JFrame updateMenu = new ManageService("update");
         
         this.dispose();
         updateMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -171,25 +155,7 @@ public class ServicesMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        JFrame deleteMenu = new ManageService();
-        
-        Component[] components = deleteMenu.getComponents();
-        
-        //Changes components in the manage service, to make it look like update menu:
-        for (Component c : components) {
-            if (c instanceof JLabel) {
-                JLabel label = (JLabel) c;
-                if (label.getName().equals("title"))
-                    label.setText("Delete Services");
-            }
-            if (c instanceof JTextField) {
-                JTextField textfield = (JTextField) c;
-                if (textfield.getName().equals("NameTextField") ||
-                    textfield.getName().equals("DescriptionTextField") ||
-                    textfield.getName().equals("PriceTextField"))
-                    textfield.setEnabled(false);
-            }
-        }
+        JFrame deleteMenu = new ManageService("delete");
         
         this.dispose();
         deleteMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -211,24 +177,9 @@ public class ServicesMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
-        JFrame createMenu = new ManageService();
+        JFrame createMenu = new ManageService("create");
         
         Component[] components = createMenu.getComponents();
-        
-        //Changes components in the manage service, to make it look like create menu:
-        for (Component c : components) {
-            if (c instanceof JLabel) {
-                JLabel label = (JLabel) c;
-                if (label.getName().equals("title"))
-                    label.setText("Create Services");
-            }
-            if (c instanceof JTextField) {
-                JTextField textfield = (JTextField) c;
-                System.out.println("Found textfield " + textfield.getName());
-                if (textfield.getName().equals("IDTextField"))
-                    textfield.setEnabled(false);
-            }
-        }
         
         this.dispose();
         createMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

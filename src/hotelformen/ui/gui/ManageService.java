@@ -14,12 +14,14 @@ import javax.swing.JFrame;
  * @author Kristian
  */
 public class ManageService extends javax.swing.JFrame {
-    IController ctr;
+    private IController _ctr;
+    private String _typeCRUD;
     /**
      * Creates new form CreateService
      */
-    public ManageService() {
-        ctr = new Controller();
+    public ManageService(String typeCRUD) {
+        _ctr = new Controller();
+        _typeCRUD = typeCRUD;
         initComponents();
     }
 
@@ -34,13 +36,13 @@ public class ManageService extends javax.swing.JFrame {
 
         menuPanel = new java.awt.Panel();
         titleLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        idTF = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        nameTF = new javax.swing.JTextField();
+        descriptionTF = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        priceTF = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         goBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
@@ -53,10 +55,10 @@ public class ManageService extends javax.swing.JFrame {
         titleLabel.setText("Services Management");
         titleLabel.setName("title"); // NOI18N
 
-        jTextField1.setName("IDTextField"); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        idTF.setName("IDTextField"); // NOI18N
+        idTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                idTFActionPerformed(evt);
             }
         });
 
@@ -64,13 +66,13 @@ public class ManageService extends javax.swing.JFrame {
 
         jLabel3.setText("Name:");
 
-        jTextField2.setName("NameTextField"); // NOI18N
+        nameTF.setName("NameTextField"); // NOI18N
 
-        jTextField3.setName("DescriptionTextField"); // NOI18N
+        descriptionTF.setName("DescriptionTextField"); // NOI18N
 
         jLabel4.setText("Descripion:");
 
-        jTextField4.setName("PriceTextField"); // NOI18N
+        priceTF.setName("PriceTextField"); // NOI18N
 
         jLabel5.setText("Price:");
 
@@ -105,10 +107,10 @@ public class ManageService extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField1)
+                    .addComponent(priceTF)
+                    .addComponent(descriptionTF)
+                    .addComponent(nameTF)
+                    .addComponent(idTF)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
                         .addComponent(goBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -122,19 +124,19 @@ public class ManageService extends javax.swing.JFrame {
                 .addComponent(titleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descriptionTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(priceTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -163,9 +165,9 @@ public class ManageService extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void idTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_idTFActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         JFrame servicesMenu = new ServicesMenu();
@@ -180,8 +182,16 @@ public class ManageService extends javax.swing.JFrame {
 
     private void goBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBtnActionPerformed
         
-        switch(titleLabel.getText()) {
-            case "":
+        switch(_typeCRUD) {
+            case "create":
+                _ctr.createService(nameTF.getText(), descriptionTF.getText(), Double.parseDouble(priceTF.getText()));
+                break;
+            case "update":
+                _ctr.updateService(Integer.parseInt(idTF.getText()), nameTF.getText(), descriptionTF.getText(), Double.parseDouble(priceTF.getText()));
+                break;
+            case "delete":
+                _ctr.deleteService(Integer.parseInt(idTF.getText()));
+                break;
         }
     }//GEN-LAST:event_goBtnActionPerformed
 
@@ -216,23 +226,42 @@ public class ManageService extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManageService().setVisible(true);
+                new ManageService("create").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
+    private javax.swing.JTextField descriptionTF;
     private javax.swing.JButton goBtn;
+    private javax.swing.JTextField idTF;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private java.awt.Panel menuPanel;
+    private javax.swing.JTextField nameTF;
+    private javax.swing.JTextField priceTF;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
+    /**
+     */
+    public void setCtr(IController ctr) {
+        this._ctr = ctr;
+    }
+
+    /**
+     * @return the _typeCRUD
+     */
+    public String getTypeCUD() {
+        return _typeCRUD;
+    }
+
+    /**
+     * @param typeCUD the _typeCRUD to set
+     */
+    public void setTypeCUD(String typeCUD) {
+        this._typeCRUD = typeCUD;
+    }
 }
