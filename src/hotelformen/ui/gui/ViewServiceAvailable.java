@@ -223,11 +223,11 @@ public class ViewServiceAvailable extends javax.swing.JFrame {
         List<Service> addedServices = new ArrayList<Service>();
         
         for (String s : resultList.getSelectedItems()) {
-            addedServices.add(ctr.getServiceFromName(s.split(" ")[3]));
+            addedServices.add(ctr.getServiceFromName(s.split(" ")[2]));
         }
         
-        int bookingID = Integer.parseInt(bookingIDTF.getText());
-        ctr.addServicesToBooking(addedServices, bookingID);
+        int customerID = Integer.parseInt(bookingIDTF.getText());
+        ctr.addServicesToBooking(addedServices, customerID);
     }//GEN-LAST:event_addServiceBtnActionPerformed
 
     /**
