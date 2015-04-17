@@ -22,6 +22,21 @@ public class ManageService extends javax.swing.JFrame {
     public ManageService(String typeCRUD) {
         _ctr = new Controller();
         _typeCRUD = typeCRUD;
+        switch(typeCRUD) {
+            case "create":
+                titleLabel.setText("Create Services");
+                idTF.setEnabled(false);
+                break;
+            case "update":
+                titleLabel.setText("Update Services");
+                break;
+            case "delete":
+                titleLabel.setText("Delete Services");
+                nameTF.setEnabled(false);
+                descriptionTF.setEnabled(false);
+                priceTF.setEnabled(false);
+                break;  
+        }
         initComponents();
     }
 
@@ -185,12 +200,15 @@ public class ManageService extends javax.swing.JFrame {
         switch(_typeCRUD) {
             case "create":
                 _ctr.createService(nameTF.getText(), descriptionTF.getText(), Double.parseDouble(priceTF.getText()));
+                System.out.println("Created Service");
                 break;
             case "update":
                 _ctr.updateService(Integer.parseInt(idTF.getText()), nameTF.getText(), descriptionTF.getText(), Double.parseDouble(priceTF.getText()));
+                System.out.println("Update Service is not implemented");
                 break;
             case "delete":
                 _ctr.deleteService(Integer.parseInt(idTF.getText()));
+                System.out.println("Deleted Service");
                 break;
         }
     }//GEN-LAST:event_goBtnActionPerformed
