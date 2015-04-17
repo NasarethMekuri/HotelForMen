@@ -53,6 +53,7 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         resultList.setBackground(new java.awt.Color(204, 204, 204));
+        resultList.setMultipleMode(true);
         resultList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resultListActionPerformed(evt);
@@ -85,6 +86,11 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
         });
 
         bookRoomBtn.setText("Book Rooms");
+        bookRoomBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookRoomBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
@@ -173,7 +179,7 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
     
     
     private void resultListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultListActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Number of Selected" + resultList.getSelectedItems().length);
     }//GEN-LAST:event_resultListActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -182,7 +188,7 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
         this.dispose();
         bookingMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         bookingMenu.setResizable(false);
-        bookingMenu.setTitle("Services Menu");
+        bookingMenu.setTitle("Booking Menu");
         bookingMenu.setVisible(true);
         bookingMenu.setLocationRelativeTo(null);
     }//GEN-LAST:event_backBtnActionPerformed
@@ -195,6 +201,10 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
         }
         this.repaint();
     }//GEN-LAST:event_goBtnActionPerformed
+
+    private void bookRoomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookRoomBtnActionPerformed
+        System.out.println("Number of Selected" + resultList.getSelectedItems().length);
+    }//GEN-LAST:event_bookRoomBtnActionPerformed
 
     /**
      * @param args the command line arguments
