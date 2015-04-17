@@ -63,6 +63,11 @@ public class Controller implements IController
         return hotel.getServices();
     }
     
+    public Service getServiceFromName(String name)
+    {
+        return hotel.getServiceFromName(name);
+    }
+    
     private RoomType getTypeFromString(String _type)
     {
         switch (_type.toUpperCase())

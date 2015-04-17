@@ -250,7 +250,7 @@ public class Hotel
         }
     }
     
-    public List<Service> getServicesByPrice(double price)
+    public List<Service> getServicesFromPrice(double price)
     {
         List<Service> servicesWithSpecificPrice = new ArrayList();
         for (Service s : _services)
@@ -263,7 +263,7 @@ public class Hotel
         return servicesWithSpecificPrice;
     }
     
-    public List<Service> getServicesByName(String name)
+    public List<Service> getServicesFromName(String name)
     {
         List<Service> servicesWithSpecificName = new ArrayList();
         for (Service s : _services)
@@ -276,7 +276,7 @@ public class Hotel
         return servicesWithSpecificName;
     }
     
-    public Service getServiceByName(String name)
+    public Service getServiceFromName(String name)
     {
         for (Service s : _services)
         {

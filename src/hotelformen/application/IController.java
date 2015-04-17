@@ -24,4 +24,5 @@ public interface IController
     public List<Room> getAvailableRooms(Date startDate, Date endDate, String type);
     public List<Service> getServices();
     public Room getRoomFromId(int roomID);
+    public Service getServiceFromName(String name);
 }
