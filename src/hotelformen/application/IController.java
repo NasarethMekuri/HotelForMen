@@ -5,9 +5,7 @@
  */
 package hotelformen.application;
 
-import hotelformen.domain.Customer;
 import hotelformen.domain.Room;
-import hotelformen.domain.RoomType;
 import hotelformen.domain.Service;
 import java.sql.Date;
 import java.util.List;
@@ -18,11 +16,11 @@ import java.util.List;
  */
 public interface IController
 {
-    public void bookRooms(List<Room> rooms, Date startDate, Date endDate, Customer customer, List<Service> services);
-    public void addServicesToBooking(List<Service> services, Customer customer);
+    public void bookRooms(List<Room> rooms, Date startDate, Date endDate, int customerID, List<Service> services);
+    public void addServicesToBooking(List<Service> services, int customerID);
     public void createService(int id, String name, String description, double price);
     public void updateService(int id, String name, String description, double price);
     public void deleteService(int id);
-    public void getAvailableRooms(Date startDate, Date endDate, RoomType type);
+    public void getAvailableRooms(Date startDate, Date endDate, String type);
     public void getServices();
 }

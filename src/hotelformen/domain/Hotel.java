@@ -1,5 +1,6 @@
 package hotelformen.domain;
 
+import hotelformen.technical.DatabaseHandler;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,13 +12,16 @@ public class Hotel
     private List<Employee> _employees;
     private List<Service> _services;
     private List<Booking> _bookings;
+    private DatabaseHandler _databaseHandler;
     
     public Hotel()
     {
-        /*
-        TODO:
-        Initialize all variables from Database?
-        */
+       _databaseHandler = new DatabaseHandler();
+       _rooms = _databaseHandler.getRooms();
+       _customers = _databaseHandler.getCustomers();
+       _employees = _databaseHandler.getEmployees();
+       _services = _databaseHandler.getServices();
+       _bookings = _databaseHandler.getBookings();
     }
     
     /**
@@ -64,6 +68,11 @@ public class Hotel
      * @param _bookings the _bookings to set
      */
     public void setBookings(List<Booking> _bookings)    {this._bookings = _bookings;}
+    
+      /**
+     * @return the _dbh
+     */
+    public DatabaseHandler getDatabaseHandler()                     {return _databaseHandler;}
     
     /**
      * This method creates a Room
@@ -177,7 +186,7 @@ public class Hotel
     {
         Booking booking = new Booking(customer, services, reservations);
         
-        return true;
+        return _databaseHandler.saveBooking(booking);
     }
     
     
@@ -250,6 +259,8 @@ public class Hotel
             }
         }
     }
+
+  
 }
 
 
