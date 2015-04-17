@@ -58,6 +58,7 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         servicesBtn.setText("Services");
+        servicesBtn.setPreferredSize(new java.awt.Dimension(75, 23));
         servicesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 servicesBtnActionPerformed(evt);
@@ -72,6 +73,7 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MainMenu");
 
         exitBtn.setText("Exit");
@@ -88,19 +90,20 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                        .addGap(62, 62, 62)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(productsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bookingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(servicesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(servicesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 43, Short.MAX_VALUE)
-                .addComponent(userBtn)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userBtn))
                 .addGap(32, 32, 32))
         );
         jPanel1Layout.setVerticalGroup(
@@ -113,7 +116,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(productsBtn)
                 .addGap(18, 18, 18)
-                .addComponent(servicesBtn)
+                .addComponent(servicesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(userBtn)
                 .addGap(18, 18, 18)
@@ -159,14 +162,14 @@ public class MainMenu extends javax.swing.JFrame {
     private void productsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productsBtnActionPerformed
         System.out.println("Much Products, yallayalla");
         
-        JFrame bookMenu = new BookingMenu();
+        JFrame productMenu = new ProductMenu();
         
         this.dispose();
-        bookMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        bookMenu.setResizable(false);
-        bookMenu.setTitle("Booking Menu");
-        bookMenu.setVisible(true);
-        bookMenu.setLocationRelativeTo(null);
+        productMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        productMenu.setResizable(false);
+        productMenu.setTitle("Booking Menu");
+        productMenu.setVisible(true);
+        productMenu.setLocationRelativeTo(null);
     }//GEN-LAST:event_productsBtnActionPerformed
 
     private void servicesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicesBtnActionPerformed
