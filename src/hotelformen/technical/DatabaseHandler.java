@@ -319,4 +319,40 @@ public class DatabaseHandler
         }
         return success;
     }
+    
+    public Service createService(String name, String desc, double price)
+    {
+        Connection c = null;
+        Service service = null;
+        int employeeID = 1; //Currently service is not given an employee ID in the domain. Hardcoded value used.
+        try
+        {
+            c = getConnection();
+            CallableStatement cs = c.prepareCall("{call add_service(?, ?, ?, ?, ?)}");
+            cs.setString(1, name); 
+            cs.setString(2, desc);
+            cs.setDouble(3, price);
+            cs.setInt(4, employeeID); 
+            cs.registerOutParameter(5, java.sql.Types.INTEGER);
+            
+            cs.execute();
+            int ServiceID = cs.getInt(5);
+            service = new Service(ServiceID, name, desc, price);
+
+        } catch (SQLException ex)
+        {
+            System.out.println("Database Error! - " + ex.getLocalizedMessage());
+        }
+        finally
+        {
+            try
+            {
+                c.close();
+            } catch (SQLException ex)
+            {
+                System.out.println("Failed to close database!");
+            }
+        }
+        return service;
+    }
 }
