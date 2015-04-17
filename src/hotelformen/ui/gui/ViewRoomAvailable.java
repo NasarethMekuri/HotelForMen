@@ -215,7 +215,7 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
     }//GEN-LAST:event_goBtnActionPerformed
 
     private void bookRoomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookRoomBtnActionPerformed
-        System.out.println("Number of Selected" + resultList.getSelectedItems().length);
+        System.out.println("Number of Selected " + resultList.getSelectedItems().length);
         List<Room> bookedRooms = new ArrayList<Room>();
         for (String s : resultList.getSelectedItems()) {
             int id = Integer.parseInt(s.split(" ")[0]);

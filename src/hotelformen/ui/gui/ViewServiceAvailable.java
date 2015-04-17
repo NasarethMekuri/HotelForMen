@@ -10,6 +10,7 @@ import hotelformen.application.IController;
 import hotelformen.domain.Room;
 import hotelformen.domain.Service;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 
@@ -48,6 +49,9 @@ public class ViewServiceAvailable extends javax.swing.JFrame {
         backBtn = new javax.swing.JButton();
         priceTF = new javax.swing.JTextField();
         priceLabel = new javax.swing.JLabel();
+        addServiceBtn = new javax.swing.JButton();
+        bookingIDTF = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         resultList = new java.awt.List();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,25 +84,21 @@ public class ViewServiceAvailable extends javax.swing.JFrame {
 
         priceLabel.setText("Price:");
 
+        addServiceBtn.setText("Add Service to Book");
+        addServiceBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addServiceBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Booking ID:");
+
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
         menuPanelLayout.setHorizontalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuPanelLayout.createSequentialGroup()
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idLabel)
-                            .addComponent(nameLabel)
-                            .addComponent(descriptionLabel)
-                            .addComponent(priceLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(priceTF, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                            .addComponent(descriptionTF)
-                            .addComponent(nameTF)
-                            .addComponent(idTF)))
                     .addGroup(menuPanelLayout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(jLabel1))
@@ -106,7 +106,25 @@ public class ViewServiceAvailable extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(goBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(addServiceBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(idLabel)
+                            .addComponent(nameLabel)
+                            .addComponent(descriptionLabel)
+                            .addComponent(priceLabel)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bookingIDTF, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(priceTF, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                            .addComponent(descriptionTF)
+                            .addComponent(nameTF)
+                            .addComponent(idTF))))
                 .addContainerGap())
         );
         menuPanelLayout.setVerticalGroup(
@@ -130,7 +148,13 @@ public class ViewServiceAvailable extends javax.swing.JFrame {
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(priceTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(priceLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bookingIDTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addServiceBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(goBtn)
                     .addComponent(backBtn))
@@ -194,6 +218,18 @@ public class ViewServiceAvailable extends javax.swing.JFrame {
         this.repaint();
     }//GEN-LAST:event_goBtnActionPerformed
 
+    private void addServiceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addServiceBtnActionPerformed
+        System.out.println("Number of Selected " + resultList.getSelectedItems().length);
+        List<Service> addedServices = new ArrayList<Service>();
+        
+        for (String s : resultList.getSelectedItems()) {
+            addedServices.add(ctr.getServiceFromName(s.split(" ")[3]));
+        }
+        
+        int bookingID = Integer.parseInt(bookingIDTF.getText());
+        ctr.addServicesToBooking(addedServices, bookingID);
+    }//GEN-LAST:event_addServiceBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -230,13 +266,16 @@ public class ViewServiceAvailable extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addServiceBtn;
     private javax.swing.JButton backBtn;
+    private javax.swing.JTextField bookingIDTF;
     private javax.swing.JLabel descriptionLabel;
     private javax.swing.JTextField descriptionTF;
     private javax.swing.JButton goBtn;
     private javax.swing.JLabel idLabel;
     private javax.swing.JTextField idTF;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTF;
