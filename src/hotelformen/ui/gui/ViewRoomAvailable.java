@@ -5,6 +5,8 @@
  */
 package hotelformen.ui.gui;
 
+import hotelformen.application.Controller;
+import hotelformen.application.IController;
 import javax.swing.JFrame;
 
 /**
@@ -12,14 +14,14 @@ import javax.swing.JFrame;
  * @author Kristian
  */
 public class ViewRoomAvailable extends javax.swing.JFrame {
-    //IController ctr;
+    IController ctr;
     
     
     /**
      * Creates new form ViewMenu
      */
     public ViewRoomAvailable() {
-        //crt = new Controller();
+        ctr = new Controller();
         initComponents();
     }
 
