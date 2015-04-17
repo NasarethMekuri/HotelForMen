@@ -150,7 +150,12 @@ public class ServicesMenu extends javax.swing.JFrame {
         
         //Changes components in the manage service, to make it look like update menu:
         for (Component c : components) {
-            if (c instanceof JTextField) {
+            if (c instanceof JLabel) {
+                JLabel label = (JLabel) c;
+                if (label.getName().equals("title"))
+                    label.setText("Update Services");
+            }
+            else if (c instanceof JTextField) {
                 JTextField textfield = (JTextField) c;
                 if (textfield.getName().equals("title"))
                     textfield.setText("Update Services");
@@ -172,10 +177,13 @@ public class ServicesMenu extends javax.swing.JFrame {
         
         //Changes components in the manage service, to make it look like update menu:
         for (Component c : components) {
+            if (c instanceof JLabel) {
+                JLabel label = (JLabel) c;
+                if (label.getName().equals("title"))
+                    label.setText("Delete Services");
+            }
             if (c instanceof JTextField) {
                 JTextField textfield = (JTextField) c;
-                if (textfield.getName().equals("title"))
-                    textfield.setText("Update Services");
                 if (textfield.getName().equals("NameTextField") ||
                     textfield.getName().equals("DescriptionTextField") ||
                     textfield.getName().equals("PriceTextField"))
@@ -209,10 +217,14 @@ public class ServicesMenu extends javax.swing.JFrame {
         
         //Changes components in the manage service, to make it look like create menu:
         for (Component c : components) {
+            if (c instanceof JLabel) {
+                JLabel label = (JLabel) c;
+                if (label.getName().equals("title"))
+                    label.setText("Create Services");
+            }
             if (c instanceof JTextField) {
                 JTextField textfield = (JTextField) c;
-                if (textfield.getName().equals("title"))
-                    textfield.setText("Create Services");
+                System.out.println("Found textfield " + textfield.getName());
                 if (textfield.getName().equals("IDTextField"))
                     textfield.setEnabled(false);
             }
