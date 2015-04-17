@@ -102,7 +102,7 @@ public class Controller implements IController
         return null;
     }
     
-    public Room getRoomById(int roomID)
+    public Room getRoomFromId(int roomID)
     {
         for (Room r : hotel.getRooms())
         {
