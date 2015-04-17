@@ -117,30 +117,13 @@ public class Hotel
             }
             //Get all reservations for the Room in the current iteration.
             List<Reservation> roomReservations = _rooms.get(i).getReservations();
-            
+
             //Iterate through the reservations of the Room in the current iteration.
             for (int j = 0; j < roomReservations.size(); j++)
             {
-                //Check if (param)startDate is before the startDate in the reservation AND if (param)startDate is after the EndDate in the reservation.
-                if (roomReservations.get(j).getStartDate().compareTo(startDate) < 0 && roomReservations.get(j).getEndDate().compareTo(startDate) > 0)
-                {
-                    //Check if (param)endDate is before the startDate in the reservation AND if (param)endDate is after the EndDate in the reservation.
-                    if (roomReservations.get(j).getStartDate().compareTo(endDate) < 0 && roomReservations.get(j).getEndDate().compareTo(endDate) > 0)
-                    {
-                        //Check if (param)startDate is before the startDate in the reservation AND if (param)endDate is before the startDate in the reservation.
-                        if (roomReservations.get(j).getStartDate().compareTo(startDate) < 0 && roomReservations.get(j).getStartDate().compareTo(endDate) < 0)
-                        {
-                            //if above is true, add to result-List
-                            result.add(_rooms.get(i));
-                        }
-                        //Check if (param)startDate is after the endDate in the reservation AND if (param)endDate is after the endDate in the reservation.
-                        else if (roomReservations.get(j).getEndDate().compareTo(startDate) > 0 && roomReservations.get(j).getEndDate().compareTo(endDate) > 0)
-                        {
-                            //if above is true, add to result-List
-                            result.add(_rooms.get(i));
-                        }
-                    }
-                }
+                if((roomReservations.get(j).getStartDate().compareTo(startDate) > 0 && roomReservations.get(j).getStartDate().compareTo(endDate) > 0) ||
+                   (roomReservations.get(j).getEndDate().compareTo(startDate) < 0 && roomReservations.get(j).getEndDate().compareTo(endDate) < 0))
+                    result.add(_rooms.get(i));
             }
         }
         return result;
