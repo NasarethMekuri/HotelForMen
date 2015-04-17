@@ -22,6 +22,8 @@ public class ManageService extends javax.swing.JFrame {
     public ManageService(String typeCRUD) {
         _ctr = new Controller();
         _typeCRUD = typeCRUD;
+        initComponents();
+        
         switch(typeCRUD) {
             case "create":
                 titleLabel.setText("Create Services");
@@ -37,7 +39,8 @@ public class ManageService extends javax.swing.JFrame {
                 priceTF.setEnabled(false);
                 break;  
         }
-        initComponents();
+        
+        this.repaint();
     }
 
     /**
