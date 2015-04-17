@@ -1,17 +1,14 @@
 package hotelformen.technical;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import hotelformen.domain.*;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -52,11 +49,23 @@ public class DatabaseHandler
             
             while(rs.next())
             {
-                rooms.add(new Room(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4)));
+                Room tmp = new Room(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4)); 
+                
+                List<Reservation> reservations = new ArrayList<Reservation>();
+                cs = c.prepareCall("{call get_reservations_from_room(?)}");
+                cs.setInt(1, tmp.getID());
+                ResultSet rrs = cs.executeQuery();
+
+                while(rrs.next())
+                   reservations.add(new Reservation(rrs.getInt(1), rrs.getDate(4), rrs.getDate(5)));
+                
+                tmp.setReservations(reservations);
+                rooms.add(tmp);
+                rrs.close();
             }
         } catch (SQLException ex)
         {
-            System.out.println("Database Error!");
+            System.out.println("Database Error! - " + ex.getLocalizedMessage());
         }
         finally
         {
@@ -198,8 +207,7 @@ public class DatabaseHandler
         }
         return employees;
     }
-    
-    
+
     public List<Booking> getBookings()
     {
         List<Booking> bookings = new ArrayList<Booking>();
@@ -294,7 +302,6 @@ public class DatabaseHandler
                 cs.setDate(4, r.getEndDate());
                 cs.execute();
             }
-            
         } catch (SQLException ex)
         {
             System.out.println("Database Error! - " + ex.getLocalizedMessage());

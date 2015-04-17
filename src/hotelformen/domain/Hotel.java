@@ -22,6 +22,7 @@ public class Hotel
        _employees = _databaseHandler.getEmployees();
        _services = _databaseHandler.getServices();
        _bookings = _databaseHandler.getBookings();
+        System.out.println("Number of Rooms " + _rooms.size());
     }
     
     /**
