@@ -185,11 +185,13 @@ public class ViewServiceAvailable extends javax.swing.JFrame {
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void goBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBtnActionPerformed
+        resultList.removeAll();
         List<Service> services = ctr.getServices();
         
         for (Service s : services) {
             resultList.add(s.getID() + " - " + s.getName());
         }
+        this.repaint();
     }//GEN-LAST:event_goBtnActionPerformed
 
     /**
