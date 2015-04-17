@@ -45,15 +45,15 @@ public class Controller implements IController
     }
     
     @Override
-    public void updateService(int id, String name, String description, double price)
+    public boolean updateService(int id, String name, String description, double price)
     {
-        hotel.updateService(id, name, description, price);
+        return hotel.updateService(id, name, description, price);
     }
     
     @Override
-    public void deleteService(int id)
+    public boolean deleteService(int id)
     {
-        hotel.deleteService(id);
+        return hotel.deleteService(id);
     }
     
     

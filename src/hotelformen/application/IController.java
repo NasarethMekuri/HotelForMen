@@ -22,9 +22,9 @@ public interface IController
     //Add to ServiceManager and convert to IServiceController -When it exists
     public boolean addServicesToBooking(List<Service> services, int customerID);
     public Service getServiceFromName(String name);
-    public Service createService(int id, String name, String description, double price);
-    public void updateService(int id, String name, String description, double price);
-    public void deleteService(int id);
+    public Service createService(String name, String description, double price);
+    public boolean updateService(int id, String name, String description, double price);
+    public boolean deleteService(int id);
     public List<Service> getServices();
     //Add to RoomManager and convert to IRoomController -When it exists
     public Room getRoomFromId(int roomID);

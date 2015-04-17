@@ -194,7 +194,7 @@ public class Hotel
         return _databaseHandler.createService(String name, String description, double price);
     }
     
-    public void updateService(int id, String name, String description, double price)//TODO: return type must be boolean! change should be verified 
+    public boolean updateService(int id, String name, String description, double price)//TODO: return type must be boolean! change should be verified 
     {
         for (int i = 0; i < _services.size(); i++)
         {
@@ -203,7 +203,7 @@ public class Hotel
                 _services.get(i).setName(name);
                 _services.get(i).setDescripion(description);
                 _services.get(i).setPrice(price);
-                return;
+                return _services.get(i);
             }
         }
     }
