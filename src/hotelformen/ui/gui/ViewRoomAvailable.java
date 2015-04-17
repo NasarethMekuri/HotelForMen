@@ -194,6 +194,7 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
             System.out.println(r.getID() + " - " + r.getType().name().toLowerCase());
             resultList.add(r.getID() + " - " + r.getType().name().toLowerCase());
         }
+        this.repaint();
     }//GEN-LAST:event_goBtnActionPerformed
 
     /**
