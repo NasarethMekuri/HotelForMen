@@ -355,4 +355,35 @@ public class DatabaseHandler
         }
         return service;
     }
+    
+    public boolean deleteService(int id)
+    {
+        Connection c = null;
+        Service service = null;
+        boolean success = false;
+        int employeeID = 1; //Currently service is not given an employee ID in the domain. Hardcoded value used.
+        try
+        {
+            c = getConnection();
+            CallableStatement cs = c.prepareCall("{call delete_service(?)}");
+            cs.setInt(1, id); 
+            
+            cs.execute();
+            success = true;
+        } catch (SQLException ex)
+        {
+            System.out.println("Database Error! - " + ex.getLocalizedMessage());
+        }
+        finally
+        {
+            try
+            {
+                c.close();
+            } catch (SQLException ex)
+            {
+                System.out.println("Failed to close database!");
+            }
+        }
+        return success;
+    }
 }
