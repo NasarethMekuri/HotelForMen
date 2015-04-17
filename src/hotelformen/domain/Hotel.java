@@ -22,6 +22,7 @@ public class Hotel
        _employees = _databaseHandler.getEmployees();
        _services = _databaseHandler.getServices();
        _bookings = _databaseHandler.getBookings();
+        System.out.println("Number of Rooms " + _rooms.size());
     }
     
     /**
@@ -247,6 +248,44 @@ public class Hotel
                 return;
             }
         }
+    }
+    
+    public List<Service> getServicesByPrice(double price)
+    {
+        List<Service> servicesWithSpecificPrice = new ArrayList();
+        for (Service s : _services)
+        {
+            if (s.getPrice()== price)
+            {
+                servicesWithSpecificPrice.add(s);
+            }
+        }
+        return servicesWithSpecificPrice;
+    }
+    
+    public List<Service> getServicesByName(String name)
+    {
+        List<Service> servicesWithSpecificName = new ArrayList();
+        for (Service s : _services)
+        {
+            if (s.getName().toLowerCase().equals(name.toLowerCase()))
+            {
+                servicesWithSpecificName.add(s);
+            }
+        }
+        return servicesWithSpecificName;
+    }
+    
+    public Service getServiceByName(String name)
+    {
+        for (Service s : _services)
+        {
+            if (s.getName().toLowerCase().equals(name.toLowerCase()))
+            {
+                return s;
+            }
+        }
+        return null;
     }
     
     public void deleteService(int id) //TODO: return type must be boolean! change should be verified 
