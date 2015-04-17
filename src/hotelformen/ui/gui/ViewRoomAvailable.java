@@ -48,6 +48,7 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
         roomTypeLabel = new javax.swing.JLabel();
         goBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
+        bookRoomBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +84,8 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
             }
         });
 
+        bookRoomBtn.setText("Book Rooms");
+
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
         menuPanelLayout.setHorizontalGroup(
@@ -104,11 +107,14 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addComponent(titleLabel)
                         .addGap(0, 25, Short.MAX_VALUE))
-                    .addGroup(menuPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(goBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(backBtn)))
+                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(menuPanelLayout.createSequentialGroup()
+                                .addComponent(goBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(bookRoomBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         menuPanelLayout.setVerticalGroup(
@@ -128,7 +134,9 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(roomTypeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(roomTypeLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addComponent(bookRoomBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(goBtn)
                     .addComponent(backBtn))
@@ -182,8 +190,9 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
     private void goBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBtnActionPerformed
         List<Room> rooms = ctr.getAvailableRooms(Date.valueOf(startDateTF.getText()), Date.valueOf(endDateTF.getText()), 
                 (roomTypeTF.getText().equals("")) ? null : roomTypeTF.getText());
-        
+        System.out.println("Rooms found: " + rooms.size());
         for (Room r : rooms) {
+            System.out.println(r.getID() + " - " + r.getType().name().toLowerCase());
             resultList.add(r.getID() + " - " + r.getType().name().toLowerCase());
         }
     }//GEN-LAST:event_goBtnActionPerformed
@@ -226,6 +235,7 @@ public class ViewRoomAvailable extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
+    private javax.swing.JButton bookRoomBtn;
     private javax.swing.JLabel endDateLabel;
     private javax.swing.JTextField endDateTF;
     private javax.swing.JButton goBtn;
