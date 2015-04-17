@@ -102,4 +102,16 @@ public class Controller implements IController
         return null;
     }
     
+    public Room getRoomById(int roomID)
+    {
+        for (Room r : hotel.getRooms())
+        {
+            if (r.getID() == roomID)
+            {
+                return r;
+            }
+        }
+        return null;
+    }
+    
 }
