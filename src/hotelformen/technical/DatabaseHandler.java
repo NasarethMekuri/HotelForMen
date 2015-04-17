@@ -103,6 +103,103 @@ public class DatabaseHandler
         return services;
     }
     
+    public List<Reservation> getReservations()
+    {
+        List<Reservation> reservations = new ArrayList<Reservation>();
+        ResultSet rs = null;
+        Connection c = null;
+        try
+        {
+            c = getConnection();
+            CallableStatement cs = c.prepareCall("{call get_reservations}");
+            rs = cs.executeQuery();
+            
+            while(rs.next())
+            {
+                reservations.add(new Reservation(rs.getInt(1), rs.getDate(4), rs.getDate(5)));
+            }
+        } catch (SQLException ex)
+        {
+            System.out.println("Database Error!");
+        }
+        finally
+        {
+            try
+            {
+                c.close();
+            } catch (SQLException ex)
+            {
+                System.out.println("Failed to close database!");
+            }
+        }
+        return reservations;
+    }
+    
+    public List<Customer> getCustomers()
+    {
+        List<Customer> customers = new ArrayList<Customer>();
+        ResultSet rs = null;
+        Connection c = null;
+        try
+        {
+            c = getConnection();
+            CallableStatement cs = c.prepareCall("{call get_customers}");
+            rs = cs.executeQuery();
+            
+            while(rs.next())
+            {
+                customers.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5)));
+            }
+        } catch (SQLException ex)
+        {
+            System.out.println("Database Error!");
+        }
+        finally
+        {
+            try
+            {
+                c.close();
+            } catch (SQLException ex)
+            {
+                System.out.println("Failed to close database!");
+            }
+        }
+        return customers;
+    }
+    
+     public List<Employee> getEmployees()
+    {
+        List<Employee> employees = new ArrayList<Employee>();
+        ResultSet rs = null;
+        Connection c = null;
+        try
+        {
+            c = getConnection();
+            CallableStatement cs = c.prepareCall("{call get_employees}");
+            rs = cs.executeQuery();
+            
+            while(rs.next())
+            {
+                employees.add(new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getInt(6)));
+            }
+        } catch (SQLException ex)
+        {
+            System.out.println("Database Error!");
+        }
+        finally
+        {
+            try
+            {
+                c.close();
+            } catch (SQLException ex)
+            {
+                System.out.println("Failed to close database!");
+            }
+        }
+        return employees;
+    }
+    
+    
     public List<Booking> getBookings()
     {
         List<Booking> bookings = new ArrayList<Booking>();
@@ -163,5 +260,52 @@ public class DatabaseHandler
             }
         }
         return bookings;
+    }
+    
+    public void saveBooking(Booking booking)
+    {
+        Connection c = null;
+        try
+        {
+            c = getConnection();
+            CallableStatement cs = c.prepareCall("{call add_booking(?, ?, ?)}");
+            cs.setInt(1, 1); //Currently booking does not have an employee attached. Hardcoded value used.
+            cs.setInt(2, booking.getCustomer().getId());
+            cs.registerOutParameter(3, java.sql.Types.INTEGER);
+            cs.execute();
+            int bookingID = cs.getInt(3);
+            
+            for(Service s : booking.getServices())
+            {
+                cs = c.prepareCall("{call add_booked_service(?, ?)}");
+                cs.setInt(1, s.getID());
+                cs.setInt(2, bookingID);
+                cs.execute();
+            }
+            
+            for(Reservation r : booking.getReservations())
+            {
+                cs = c.prepareCall("{call add_reservation(?, ?, ?, ?)}");
+                cs.setInt(1, bookingID);
+                cs.setInt(2, r.getRoomID());
+                cs.setDate(3, r.getStartDate());
+                cs.setDate(4, r.getEndDate());
+                cs.execute();
+            }
+            
+        } catch (SQLException ex)
+        {
+            System.out.println("Database Error! - " + ex.getLocalizedMessage());
+        }
+        finally
+        {
+            try
+            {
+                c.close();
+            } catch (SQLException ex)
+            {
+                System.out.println("Failed to close database!");
+            }
+        }
     }
 }
