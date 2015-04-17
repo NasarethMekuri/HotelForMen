@@ -160,7 +160,16 @@ public class ServicesMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
-        // TODO add your handling code here:
+        JFrame createMenu = new ManageService();
+        
+        this.dispose();
+        createMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        createMenu.setResizable(false);
+        createMenu.setTitle("Main Menu");
+        createMenu.setVisible(true);
+        createMenu.setLocationRelativeTo(null);
+        //createMenu.getCom
+        
     }//GEN-LAST:event_createBtnActionPerformed
 
     private void availableBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availableBtnActionPerformed
