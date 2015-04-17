@@ -187,14 +187,14 @@ public class Hotel
     
     
     //Manage Services:
-    public Service createService(int id, String name, String description, double price)
+    public Service createService(String name, String description, double price)
     {
         //TODO: Handle ID! (ID should be unique, so It cannot be given as param) 
         //Create Service in Database - and fetch the unique ID from the Service table.
-        return new Service(id, name, description, price);
+        return _databaseHandler.createService(String name, String description, double price);
     }
     
-    public void updateService(int id, String name, String description, double price)//TODO: return type must be boolean! change should be verified 
+    public boolean updateService(int id, String name, String description, double price)//TODO: return type must be boolean! change should be verified 
     {
         for (int i = 0; i < _services.size(); i++)
         {
@@ -203,7 +203,7 @@ public class Hotel
                 _services.get(i).setName(name);
                 _services.get(i).setDescripion(description);
                 _services.get(i).setPrice(price);
-                return;
+                return _services.get(i);
             }
         }
     }

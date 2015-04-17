@@ -16,13 +16,17 @@ import java.util.List;
  */
 public interface IController
 {
+    //Add to BookingManager and convert to IRoomController -When it exists
     public boolean bookRooms(List<Room> rooms, Date startDate, Date endDate, int customerID, List<Service> services);
-    public boolean addServicesToBooking(List<Service> services, int customerID);
-    public Service createService(int id, String name, String description, double price);
-    public void updateService(int id, String name, String description, double price);
-    public void deleteService(int id);
     public List<Room> getAvailableRooms(Date startDate, Date endDate, String type);
-    public List<Service> getServices();
-    public Room getRoomFromId(int roomID);
+    //Add to ServiceManager and convert to IServiceController -When it exists
+    public boolean addServicesToBooking(List<Service> services, int customerID);
     public Service getServiceFromName(String name);
+    public Service createService(String name, String description, double price);
+    public boolean updateService(int id, String name, String description, double price);
+    public boolean deleteService(int id);
+    public List<Service> getServices();
+    //Add to RoomManager and convert to IRoomController -When it exists
+    public Room getRoomFromId(int roomID);
+    
 }
