@@ -174,6 +174,7 @@ public class Hotel
                 for (Service s : services)
                 {
                     _bookings.get(i).addServiceToBooking(s);
+                    //TODO SAVE DATA TO DATABASE.
                     //return here to only add service(s) to customers FIRST occuring booking
                 }   
             }

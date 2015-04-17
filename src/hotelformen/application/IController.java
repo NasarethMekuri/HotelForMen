@@ -16,11 +16,11 @@ import java.util.List;
  */
 public interface IController
 {
-    public void bookRooms(List<Room> rooms, Date startDate, Date endDate, int customerID, List<Service> services);
-    public void addServicesToBooking(List<Service> services, int customerID);
-    public void createService(int id, String name, String description, double price);
+    public boolean bookRooms(List<Room> rooms, Date startDate, Date endDate, int customerID, List<Service> services);
+    public boolean addServicesToBooking(List<Service> services, int customerID);
+    public Service createService(int id, String name, String description, double price);
     public void updateService(int id, String name, String description, double price);
     public void deleteService(int id);
-    public void getAvailableRooms(Date startDate, Date endDate, String type);
-    public void getServices();
+    public List<Room> getAvailableRooms(Date startDate, Date endDate, String type);
+    public List<Service> getServices();
 }

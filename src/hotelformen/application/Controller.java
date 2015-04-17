@@ -18,30 +18,30 @@ public class Controller implements IController
     private Hotel hotel = new Hotel();
 
     @Override
-    public void getAvailableRooms(Date startDate, Date endDate, String type)
+    public List<Room> getAvailableRooms(Date startDate, Date endDate, String type)
     {
         RoomType _type = getTypeFromString(type);
-        hotel.getAvailableRooms(startDate, endDate, _type);
+        return hotel.getAvailableRooms(startDate, endDate, _type);
     }
     
     @Override
-    public void bookRooms(List<Room> rooms, Date startDate, Date endDate, int customerID, List<Service> services)
+    public boolean bookRooms(List<Room> rooms, Date startDate, Date endDate, int customerID, List<Service> services)
     {
         Customer customer = getCustomerFromId(customerID);
-        hotel.bookRooms(rooms, startDate, endDate, customer, services);
+        return hotel.bookRooms(rooms, startDate, endDate, customer, services);
     }
 
     @Override
-    public void addServicesToBooking(List<Service> services, int customerID)
+    public boolean addServicesToBooking(List<Service> services, int customerID)
     {
         Customer customer = getCustomerFromId(customerID);
-        hotel.addServicesToBooking(services, customer);
+        return hotel.addServicesToBooking(services, customer);
     }
 
     @Override
-    public void createService(int id, String name, String description, double price)
+    public Service createService(int id, String name, String description, double price)
     {
-        hotel.createService(id, name, description, price);
+        return hotel.createService(id, name, description, price);
     }
 
     @Override
@@ -58,9 +58,9 @@ public class Controller implements IController
 
     
     @Override
-    public void getServices()
+    public List<Service> getServices()
     {
-        hotel.getServices();
+        return hotel.getServices();
     }
     
     private RoomType getTypeFromString(String _type)
