@@ -51,6 +51,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
+        <Property name="multipleMode" type="boolean" value="true"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resultListActionPerformed"/>
