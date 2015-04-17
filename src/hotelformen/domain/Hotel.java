@@ -283,16 +283,17 @@ public class Hotel
         return null;
     }
     
-    public void deleteService(int id) //TODO: return type must be boolean! change should be verified 
+    public boolean deleteService(int id) //TODO: return type must be boolean! change should be verified 
     {
         for (int i = 0; i < _services.size(); i++)
         {
             if (_services.get(i).getID() == id)
             {
                _services.remove(i);
-               return;
+               return true;
             }
         }
+        return false;
     }
 
   
