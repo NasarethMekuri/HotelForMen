@@ -189,9 +189,11 @@ public class Hotel
     //Manage Services:
     public Service createService(String name, String description, double price)
     {
+        Service s = _databaseHandler.createService(name, description, price);
         //TODO: Handle ID! (ID should be unique, so It cannot be given as param) 
         //Create Service in Database - and fetch the unique ID from the Service table.
-        return _databaseHandler.createService(name, description, price);
+        _services.add(s);
+        return s;
     }
     
     public boolean updateService(int id, String name, String description, double price)//TODO: return type must be boolean! change should be verified 
