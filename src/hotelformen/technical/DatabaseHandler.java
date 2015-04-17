@@ -262,9 +262,10 @@ public class DatabaseHandler
         return bookings;
     }
     
-    public void saveBooking(Booking booking)
+    public boolean saveBooking(Booking booking)
     {
         Connection c = null;
+        boolean success = true;
         try
         {
             c = getConnection();
@@ -272,6 +273,7 @@ public class DatabaseHandler
             cs.setInt(1, 1); //Currently booking does not have an employee attached. Hardcoded value used.
             cs.setInt(2, booking.getCustomer().getId());
             cs.registerOutParameter(3, java.sql.Types.INTEGER);
+            
             cs.execute();
             int bookingID = cs.getInt(3);
             
@@ -296,6 +298,7 @@ public class DatabaseHandler
         } catch (SQLException ex)
         {
             System.out.println("Database Error! - " + ex.getLocalizedMessage());
+            success = false;
         }
         finally
         {
@@ -307,5 +310,6 @@ public class DatabaseHandler
                 System.out.println("Failed to close database!");
             }
         }
+        return success;
     }
 }
