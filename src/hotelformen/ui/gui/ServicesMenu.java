@@ -5,7 +5,10 @@
  */
 package hotelformen.ui.gui;
 
+import java.awt.Component;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -141,11 +144,51 @@ public class ServicesMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-        // TODO add your handling code here:
+        JFrame updateMenu = new ManageService();
+        
+        Component[] components = updateMenu.getComponents();
+        
+        //Changes components in the manage service, to make it look like update menu:
+        for (Component c : components) {
+            if (c instanceof JTextField) {
+                JTextField textfield = (JTextField) c;
+                if (textfield.getName().equals("title"))
+                    textfield.setText("Update Services");
+            }
+        }
+        
+        this.dispose();
+        updateMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        updateMenu.setResizable(false);
+        updateMenu.setTitle("Update Services");
+        updateMenu.setVisible(true);
+        updateMenu.setLocationRelativeTo(null);
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        // TODO add your handling code here:
+        JFrame deleteMenu = new ManageService();
+        
+        Component[] components = deleteMenu.getComponents();
+        
+        //Changes components in the manage service, to make it look like update menu:
+        for (Component c : components) {
+            if (c instanceof JTextField) {
+                JTextField textfield = (JTextField) c;
+                if (textfield.getName().equals("title"))
+                    textfield.setText("Update Services");
+                if (textfield.getName().equals("NameTextField") ||
+                    textfield.getName().equals("DescriptionTextField") ||
+                    textfield.getName().equals("PriceTextField"))
+                    textfield.setEnabled(false);
+            }
+        }
+        
+        this.dispose();
+        deleteMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        deleteMenu.setResizable(false);
+        deleteMenu.setTitle("Update Services");
+        deleteMenu.setVisible(true);
+        deleteMenu.setLocationRelativeTo(null);
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -162,14 +205,25 @@ public class ServicesMenu extends javax.swing.JFrame {
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
         JFrame createMenu = new ManageService();
         
+        Component[] components = createMenu.getComponents();
+        
+        //Changes components in the manage service, to make it look like create menu:
+        for (Component c : components) {
+            if (c instanceof JTextField) {
+                JTextField textfield = (JTextField) c;
+                if (textfield.getName().equals("title"))
+                    textfield.setText("Create Services");
+                if (textfield.getName().equals("IDTextField"))
+                    textfield.setEnabled(false);
+            }
+        }
+        
         this.dispose();
         createMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         createMenu.setResizable(false);
         createMenu.setTitle("Main Menu");
         createMenu.setVisible(true);
         createMenu.setLocationRelativeTo(null);
-        //createMenu.getCom
-        
     }//GEN-LAST:event_createBtnActionPerformed
 
     private void availableBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availableBtnActionPerformed

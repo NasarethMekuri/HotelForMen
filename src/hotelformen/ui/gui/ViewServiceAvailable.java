@@ -50,8 +50,8 @@ public class ViewServiceAvailable extends javax.swing.JFrame {
         priceTF = new javax.swing.JTextField();
         priceLabel = new javax.swing.JLabel();
         addServiceBtn = new javax.swing.JButton();
-        bookingIDTF = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        customerIDTF = new javax.swing.JTextField();
+        customerIDLabel = new javax.swing.JLabel();
         resultList = new java.awt.List();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,7 +91,7 @@ public class ViewServiceAvailable extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Booking ID:");
+        customerIDLabel.setText("Customer ID:");
 
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
@@ -117,10 +117,10 @@ public class ViewServiceAvailable extends javax.swing.JFrame {
                             .addComponent(nameLabel)
                             .addComponent(descriptionLabel)
                             .addComponent(priceLabel)
-                            .addComponent(jLabel2))
+                            .addComponent(customerIDLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bookingIDTF, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(customerIDTF, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(priceTF, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
                             .addComponent(descriptionTF)
                             .addComponent(nameTF)
@@ -150,8 +150,8 @@ public class ViewServiceAvailable extends javax.swing.JFrame {
                     .addComponent(priceLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bookingIDTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(customerIDTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(customerIDLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(addServiceBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -226,7 +226,7 @@ public class ViewServiceAvailable extends javax.swing.JFrame {
             addedServices.add(ctr.getServiceFromName(s.split(" ")[2]));
         }
         
-        int customerID = Integer.parseInt(bookingIDTF.getText());
+        int customerID = Integer.parseInt(customerIDTF.getText());
         ctr.addServicesToBooking(addedServices, customerID);
     }//GEN-LAST:event_addServiceBtnActionPerformed
 
@@ -268,14 +268,14 @@ public class ViewServiceAvailable extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addServiceBtn;
     private javax.swing.JButton backBtn;
-    private javax.swing.JTextField bookingIDTF;
+    private javax.swing.JLabel customerIDLabel;
+    private javax.swing.JTextField customerIDTF;
     private javax.swing.JLabel descriptionLabel;
     private javax.swing.JTextField descriptionTF;
     private javax.swing.JButton goBtn;
     private javax.swing.JLabel idLabel;
     private javax.swing.JTextField idTF;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTF;

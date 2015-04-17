@@ -48,7 +48,9 @@ public class ManageService extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel1.setText("Services Management");
+        jLabel1.setName("title"); // NOI18N
 
+        jTextField1.setName("IDTextField"); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -59,7 +61,13 @@ public class ManageService extends javax.swing.JFrame {
 
         jLabel3.setText("Name:");
 
+        jTextField2.setName("NameTextField"); // NOI18N
+
+        jTextField3.setName("DescriptionTextField"); // NOI18N
+
         jLabel4.setText("Descripion:");
+
+        jTextField4.setName("PriceTextField"); // NOI18N
 
         jLabel5.setText("Price:");
 
