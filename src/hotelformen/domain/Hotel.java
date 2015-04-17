@@ -117,14 +117,25 @@ public class Hotel
             }
             //Get all reservations for the Room in the current iteration.
             List<Reservation> roomReservations = _rooms.get(i).getReservations();
-
+            boolean isAvailable = false;
             //Iterate through the reservations of the Room in the current iteration.
             for (int j = 0; j < roomReservations.size(); j++)
             {
                 if((roomReservations.get(j).getStartDate().compareTo(startDate) > 0 && roomReservations.get(j).getStartDate().compareTo(endDate) > 0) ||
                    (roomReservations.get(j).getEndDate().compareTo(startDate) < 0 && roomReservations.get(j).getEndDate().compareTo(endDate) < 0))
-                    result.add(_rooms.get(i));
+                {
+                    isAvailable = true;
+                }
+                else
+                {
+                    isAvailable = false;
+                    break;
+                }
+                
             }
+            if(isAvailable)
+                result.add(_rooms.get(i));
+            
         }
         return result;
     }
