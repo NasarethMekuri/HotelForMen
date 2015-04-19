@@ -51,13 +51,8 @@ public class Booking
     /**
      * @param _isActive the _isActive to set
      */
-    public void setIsActive(boolean _isActive)                  {this._isActive = _isActive;}
-    
-    /**
-     * @return the AccumulatedPrice
-     */
-    public double getAccumulatedPrice()                         {return 0;}//TODO: Get servicePrices and roomPrice
-    
+    public void setIsActive(boolean _isActive)                  {this._isActive = _isActive;}    
+   
     public void addServiceToBooking(Service s)
     {
         //TODO Write to database.

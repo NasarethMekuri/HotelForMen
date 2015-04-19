@@ -75,6 +75,7 @@ public class Hotel
      */
     public DatabaseHandler getDatabaseHandler()                     {return _databaseHandler;}
     
+    
     /**
      * This method creates a Room
      * @param id the Room ID
@@ -92,7 +93,14 @@ public class Hotel
     TODO: updateRoom and deleteRoom methods. (Get them from list? or give Room as param?, or overload?)
     */
     
-    /**
+      private boolean createBooking(List<Reservation> reservations, Customer customer, List<Service> services)
+    {
+        Booking booking = new Booking(customer, services, reservations);
+        
+        return _databaseHandler.saveBooking(booking);
+    }
+      
+         /**
      *
      * This method searches all the rooms in the hotel and their reservations for availability.
      * If a reservation has not been made, or partially made within the requested (param) timeframe, the Room will be added to the List that is returned.
@@ -101,8 +109,6 @@ public class Hotel
      * @param type the Roomtype, if a customer has a request for a Room of a specific type. (Can be Null if there are not any preferences from the customer)
      * @return Returns a list of Avilable rooms, within the given parameters.
      */
-    
-    
     public List<Room> getAvailableRooms(Date startDate, Date endDate, RoomType type)
     {
         List<Room> result = new ArrayList<Room>();
@@ -138,8 +144,7 @@ public class Hotel
             
         }
         return result;
-    }
-    
+    }  
   
     public boolean bookRooms(List<Room> rooms, Date startDate, Date endDate, Customer customer, List<Service> services)
     {
@@ -153,6 +158,7 @@ public class Hotel
         return createBooking(reservationsList, customer, services);
     }
     
+    //DELETE THIS LINE FOR OBVIOUS REASONS
     public List<Service> viewAvailableServices()
     {
         return _services;
@@ -176,15 +182,6 @@ public class Hotel
         }
         return true;
     }
-    
-    
-    private boolean createBooking(List<Reservation> reservations, Customer customer, List<Service> services)
-    {
-        Booking booking = new Booking(customer, services, reservations);
-        
-        return _databaseHandler.saveBooking(booking);
-    }
-    
     
     //Manage Services:
     public Service createService(String name, String description, double price)
