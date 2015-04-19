@@ -18,13 +18,6 @@ public class Controller implements IController
     private Hotel hotel = new Hotel();
     
     @Override
-    public List<Room> getAvailableRooms(Date startDate, Date endDate, String type)
-    {
-        RoomType _type = getTypeFromString(type);
-        return hotel.getAvailableRooms(startDate, endDate, _type);
-    }
-    
-    @Override
     public boolean bookRooms(List<Room> rooms, Date startDate, Date endDate, int customerID, List<Service> services)
     {
         Customer customer = getCustomerFromId(customerID);
@@ -32,10 +25,23 @@ public class Controller implements IController
     }
     
     @Override
+    public List<Room> getAvailableRooms(Date startDate, Date endDate, String type)
+    {
+        RoomType _type = getTypeFromString(type);
+        return hotel.getAvailableRooms(startDate, endDate, _type);
+    }
+    
+    @Override
     public boolean addServicesToBooking(List<Service> services, int customerID)
     {
         Customer customer = getCustomerFromId(customerID);
         return hotel.addServicesToBooking(services, customer);
+    }
+    
+    @Override
+    public Service getServiceFromName(String name)
+    {
+        return hotel.getServiceFromName(name);
     }
     
     @Override
@@ -56,21 +62,28 @@ public class Controller implements IController
         return hotel.deleteService(id);
     }
     
-    
     @Override
     public List<Service> getServices()
     {
         return hotel.getServices();
     }
     
-    public Service getServiceFromName(String name)
+    @Override
+    public Room getRoomFromId(int roomID)
     {
-        return hotel.getServiceFromName(name);
+        for (Room r : hotel.getRooms())
+        {
+            if (r.getID() == roomID)
+            {
+                return r;
+            }
+        }
+        return null;
     }
     
-    private RoomType getTypeFromString(String _type)
+    private RoomType getTypeFromString(String type)
     {
-        switch (_type.toUpperCase())
+        switch (type.toUpperCase())
         {
             case "":
                 return null;
@@ -105,18 +118,6 @@ public class Controller implements IController
             if (c.getId() == custID)
             {
                 return c;
-            }
-        }
-        return null;
-    }
-    
-    public Room getRoomFromId(int roomID)
-    {
-        for (Room r : hotel.getRooms())
-        {
-            if (r.getID() == roomID)
-            {
-                return r;
             }
         }
         return null;
