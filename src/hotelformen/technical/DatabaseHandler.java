@@ -320,6 +320,13 @@ public class DatabaseHandler
         return success;
     }
     
+    /**
+     * This method both returns a servive, as well as add one to the database.
+     * @param name The name of the service
+     * @param desc The description of the service
+     * @param price The price of the service
+     * @return A service created based on the input parameters
+     */
     public Service createService(String name, String desc, double price)
     {
         Connection c = null;
